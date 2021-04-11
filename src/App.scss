@@ -1,0 +1,40 @@
+.containner {
+    background-color: #F5F5F5;
+    color: #4a4f8a;
+    padding-top: 20px;
+    .box-time {
+        margin-bottom: 20px;
+        background-color: white;
+        padding-bottom: 10px;
+    }
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .center {
+        text-align: center;
+    }
+    .margin-center {
+        margin: 0 auto;
+    }
+    .font-color {
+        color: #4a4f8a;
+    }
+    .font-date {
+        font-size: 24px;
+    }
+    time {
+        font-size: 50px;
+    }
+    hr {
+        margin: 50px;
+    }
+    h1 {
+        margin-top: 0;
+    }
+    h4 {
+        font-weight: 500;
+        font-size: 18px;
+    }
+}
