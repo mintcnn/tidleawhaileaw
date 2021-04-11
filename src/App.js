@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.scss';
+import Chat from './chat'
+import Map from './map'
+import Clock from "react-live-clock";
+import moment from "moment";
+import 'moment-timezone';
 
-function App() {
+const  App = () => {
+  const dateFormat = "ddd DD MMM";
+  var dateNow = moment().format(dateFormat);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="containner">
+      <h1 className="center font-color">Tid Leaw Hai Leaw</h1>
+      <div className="center box-time">
+          <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} />
+        
+        <div classNames="font-date">{dateNow}</div>
+        </div>
+      <div className="flex-center">
+        <Map />
+      </div>
+      <hr />
+      <div className="center font-color">
+        <h3>Tid Leaw Hai Leaw Chatbot</h3>
+        <h4>Let's start chatting</h4>
+      </div>
+      <Chat/>
     </div>
   );
 }
