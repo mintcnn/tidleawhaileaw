@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react'
 
-import Clock from "react-live-clock";
 import moment from "moment";
 import 'moment-timezone';
 import WebFont from 'webfontloader';
+import { Row, Col } from 'antd'
+import 'antd/dist/antd.css'
 
 import Chat from './chat';
-// import Map from './map'
 import './App.scss';
-import { getSituation, getTraffy } from './service/service';
-
+import { getSituation } from './service/service';
 
 const  App = () => {
   const dateFormat = "ddd DD MMM YYYY";
-  var dateNow = moment().format(dateFormat);
   const [dataSituation, setDataSituation] = useState({});
-  const [dataTraffy, setDataTraffy] = useState({})
   const [date, setDate] = useState()
 
   useEffect(() => {
@@ -25,7 +22,6 @@ const  App = () => {
       }
     })
     situation()
-    // traffy()
   }, [])
 
   const situation = async () => {
@@ -42,33 +38,24 @@ const  App = () => {
     }
   }
 
-  const traffy = async () => {
-    try {
-      const res = await getTraffy()
-      console.log(res.data);
-      setDataTraffy(res.data)
-    } catch (error) {
-      throw error
-    }
-  }
-
   return (
     <div className="containner">
       <h1 className="center font-color">Tid Leaw Hai Leaw</h1>
       <div className="center box-time">
-        <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} />
+        {/* <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} /> */}
         
         <div className="font-date">Last Updated : {date} {dataSituation.UpdateDate?.slice(11, 16)}</div>
       </div>
-        <div className="flex-row">
-          <div className="box new">
+      <Col className="all-section">
+        <Col className="flex-row">
+          <Row className="section new">
               ผู้ป่วยรายใหม่วันนี้ : {dataSituation.NewConfirmed}
-          </div>
-          <div className="box all">
+          </Row>
+          <Row className="section all">
               ผู้ป่วยยืนยันสะสม : {dataSituation.Confirmed}
-          </div>
-        </div>
-        <div className="box recovered">
+          </Row>
+        </Col>
+        <Col className="section recovered">
           <div>
             หายป่วยแล้ว : {dataSituation.Recovered}
           </div>
@@ -81,20 +68,21 @@ const  App = () => {
           <div>
             รักษาเพิ่มขึ้น : {dataSituation.NewHospitalized}
           </div>
-        </div>
-        <div className="box death">
+        </Col>
+        <Col className="section death">
           <div>
             เสียชีวิต : {dataSituation.Deaths}
           </div>
           <div>
             เสียชีวิตเพิ่ม : {dataSituation.NewDeaths}
           </div>
-        </div>
+        </Col>
+      </Col>
 
       <div className="center font-color">
         <h3>Tid Leaw Hai Leaw Chatbot</h3>
         <h4>Let's start chatting</h4>
-        <h4>inform your symptoms to know that you are at risk or not</h4>
+        <h4>please inform your symptoms</h4>
       </div>
       <Chat/>
     </div>
