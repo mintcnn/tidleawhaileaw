@@ -12,10 +12,11 @@ import { getSituation, getTraffy } from './service/service';
 
 
 const  App = () => {
-  const dateFormat = "ddd DD MMM";
+  const dateFormat = "ddd DD MMM YYYY";
   var dateNow = moment().format(dateFormat);
   const [dataSituation, setDataSituation] = useState({});
   const [dataTraffy, setDataTraffy] = useState({})
+  const [date, setDate] = useState()
 
   useEffect(() => {
     WebFont.load({
@@ -32,7 +33,10 @@ const  App = () => {
       const res = await getSituation();
       console.log(res.data);
       setDataSituation(res.data);
-
+      const month = res.data['UpdateDate'].slice(3, 5)
+      const day = res.data['UpdateDate'].slice(0, 2)
+      const year = res.data['UpdateDate'].slice(6, 10)
+      setDate(moment(month+"/"+day+"/"+year).format(dateFormat))
     } catch (error) {
       throw error
     }
@@ -54,7 +58,7 @@ const  App = () => {
       <div className="center box-time">
         <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} />
         
-        <div className="font-date">{dateNow}</div>
+        <div className="font-date">Updated at {date} {dataSituation.UpdateDate?.slice(11, 16)}</div>
       </div>
         <div className="flex-row">
           <div className="box new">
@@ -87,16 +91,10 @@ const  App = () => {
           </div>
         </div>
 
-     
-        
-      
-      {/* <div className="flex-center">
-        <Map />
-      </div>
-      <hr /> */}
       <div className="center font-color">
         <h3>Tid Leaw Hai Leaw Chatbot</h3>
         <h4>Let's start chatting</h4>
+        <h4>inform your symptoms to know that you are at risk or not</h4>
       </div>
       <Chat/>
     </div>
