@@ -58,7 +58,7 @@ const  App = () => {
       <div className="center box-time">
         <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} />
         
-        <div className="font-date">Updated at {date} {dataSituation.UpdateDate?.slice(11, 16)}</div>
+        <div className="font-date">Last Updated : {date} {dataSituation.UpdateDate?.slice(11, 16)}</div>
       </div>
         <div className="flex-row">
           <div className="box new">
