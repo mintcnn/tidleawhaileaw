@@ -4,7 +4,7 @@ class Chat extends Component {
     componentDidMount() {
         (function(d, m){
             var kommunicateSettings = {
-                "appId":"2f52f613b216230c983eaf08396f5ee03",
+                "appId":"1573df29dcac065c3504f3fc7dc1ef05a",
                 "popupWidget":true,
                 "automaticChatOpenOnNavigation":true};
             var s = document.createElement("script"); 
