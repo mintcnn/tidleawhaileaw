@@ -7,11 +7,3 @@ export const getSituation = async () => {
         throw error
     }
 }
-
-export const getTraffy = async () => {
-    try {
-        return await axios.get('https://covid19.traffy.in.th/api/state-covid19')
-    } catch (error) {
-        throw error
-    }
-}
