@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import moment from "moment";
 import 'moment-timezone';
 import WebFont from 'webfontloader';
@@ -42,8 +41,6 @@ const  App = () => {
     <div className="containner">
       <h1 className="center font-color">Tid Leaw Hai Leaw</h1>
       <div className="center box-time">
-        {/* <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Bangkok"} /> */}
-        
         <div className="font-date">Last Updated : {date} {dataSituation.UpdateDate?.slice(11, 16)}</div>
       </div>
       <Col className="all-section">
